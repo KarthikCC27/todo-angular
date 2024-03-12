@@ -1,0 +1,26 @@
+<html>
+  <body>
+    <div class="task-container">
+      <div class="new-tasks">
+        <label>ADD NEW TASK: </label>
+        <input [(ngModel)]="newtask" type="text" #new />
+        <button (click)="addtask(new.value)" styleClass = "p-button-secondary">Add </button>
+        <button [disabled]="isUpdate" (click)="editTask(new.value)">OK</button>
+      </div>
+      <p>Current task:{{ newtask }}</p>
+      <hr />
+
+      <h1>Tasks:</h1>
+
+      <div class="task-list">
+        @for (item of tasks;let index=$index; track index) {
+        <div class="item">
+          <p>{{ index + 1 }}. {{ item }}</p>
+          <button id="delbtn" (click)="deleteTask(index)">Delete</button>
+          <button id="updbtn" (click)="updateTask(index)">Edit</button><br /><br />
+        </div>
+        }
+      </div>
+    </div>
+  </body>
+</html>
